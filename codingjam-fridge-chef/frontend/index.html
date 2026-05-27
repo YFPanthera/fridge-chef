@@ -26,26 +26,42 @@
     </header>
 
     <main class="main-content">
-      <!-- Input Cloud-Card -->
+      <!-- Step 1: Input Cloud-Card -->
       <section class="cloud-card input-card">
-        <label for="ingredients-input">What's in your fridge?</label>
-        <p class="input-tip">Type a few scraps (e.g., half-used onion, stale bread, cheese)</p>
+        <label>What's in your fridge?</label>
+        <p class="input-tip">Snap a photo of your shelves or type your ingredients manually</p>
+        
+        <div class="upload-options">
+          <input type="file" id="photo-input" accept="image/*" class="hidden" />
+          <button id="camera-btn" class="btn-pillow btn-ghost">
+            <span class="btn-icon">📸</span> Take Photo / Upload
+          </button>
+          
+          <!-- Image preview container -->
+          <div id="preview-container" class="preview-container hidden">
+            <img id="photo-preview" src="" alt="Fridge upload preview" />
+            <button id="clear-photo-btn" class="clear-photo-btn" title="Remove photo">×</button>
+          </div>
+        </div>
+
+        <div class="input-divider"><span>or</span></div>
+
         <div class="input-group">
           <input
             type="text"
             id="ingredients-input"
             placeholder="stale sourdough, cheddar, half a tomato..."
-            required
             autocomplete="off"
           />
-          <button id="generate-btn" class="btn-pillow btn-apple">Cook Zero-Waste</button>
         </div>
+        
+        <button id="analyze-btn" class="btn-pillow btn-apple mt-16">Analyze Ingredients</button>
       </section>
 
       <!-- Loading State (Hidden by default) -->
       <div id="loader" class="loader hidden">
         <div class="cloud-loader float-cloud">☁️</div>
-        <p class="loader-text">rescuing your ingredients...</p>
+        <p id="loader-text" class="loader-text">rescuing your ingredients...</p>
       </div>
 
       <!-- Error State (Hidden by default) -->
@@ -54,10 +70,26 @@
         <button id="retry-btn" class="btn-pillow">Try again</button>
       </div>
 
-      <!-- Recipe Output Cloud-Card (Hidden by default) -->
+      <!-- Step 2: Refine Ingredients Card (Hidden by default) -->
+      <section id="refine-card" class="cloud-card refine-card hidden">
+        <h2>confirm what we're cooking with:</h2>
+        <p class="refine-tip">tap a tag to remove it, or add items below</p>
+        
+        <div id="tags-container" class="tags-container">
+          <!-- Bubbly tags are dynamically injected here -->
+        </div>
+
+        <div class="add-tag-group">
+          <input type="text" id="add-tag-input" placeholder="add another ingredient (e.g. egg)..." />
+          <button id="add-tag-btn" class="btn-pillow btn-ghost">Add</button>
+        </div>
+
+        <button id="find-recipe-btn" class="btn-pillow btn-apple mt-24">Find Recipe</button>
+      </section>
+
+      <!-- Step 3: Recipe Output Cloud-Card (Hidden by default) -->
       <article id="recipe-card" class="cloud-card recipe-card hidden">
         <div class="recipe-header">
-          <span id="cost-badge" class="cost-badge">Saved $7.80</span>
           <h2 id="recipe-title">Zero-Waste Recipe</h2>
         </div>
 
