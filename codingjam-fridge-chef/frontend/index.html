@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fridge Chef — let's save your leftovers</title>
+  <!-- Google Fonts: Fraunces (soft serif) & Nunito (rounded sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,600;9..144,700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="painterly">
+  <div class="app-container">
+    
+    <!-- Hero Header with Sleeping Mascot -->
+    <header class="hero-header">
+      <img
+        src="assets/cloud-pup-mascot.png"
+        alt="A sleeping fluffy white puppy curled into a cloud with a tiny apple on its head"
+        class="cloud-pup-mascot"
+        id="mascot"
+      />
+      <h1>fridge chef</h1>
+      <p class="subtitle">let's save your leftovers</p>
+    </header>
+
+    <main class="main-content">
+      <!-- Input Cloud-Card -->
+      <section class="cloud-card input-card">
+        <label for="ingredients-input">What's in your fridge?</label>
+        <p class="input-tip">Type a few scraps (e.g., half-used onion, stale bread, cheese)</p>
+        <div class="input-group">
+          <input
+            type="text"
+            id="ingredients-input"
+            placeholder="stale sourdough, cheddar, half a tomato..."
+            required
+            autocomplete="off"
+          />
+          <button id="generate-btn" class="btn-pillow btn-apple">Cook Zero-Waste</button>
+        </div>
+      </section>
+
+      <!-- Loading State (Hidden by default) -->
+      <div id="loader" class="loader hidden">
+        <div class="cloud-loader float-cloud">☁️</div>
+        <p class="loader-text">rescuing your ingredients...</p>
+      </div>
+
+      <!-- Error State (Hidden by default) -->
+      <div id="error-card" class="cloud-card error-card hidden">
+        <p id="error-message">The chef is having a quick nap. Let's try again?</p>
+        <button id="retry-btn" class="btn-pillow">Try again</button>
+      </div>
+
+      <!-- Recipe Output Cloud-Card (Hidden by default) -->
+      <article id="recipe-card" class="cloud-card recipe-card hidden">
+        <div class="recipe-header">
+          <span id="cost-badge" class="cost-badge">Saved $7.80</span>
+          <h2 id="recipe-title">Zero-Waste Recipe</h2>
+        </div>
+
+        <div class="recipe-body">
+          <div class="recipe-details">
+            <h3>what you'll need</h3>
+            <ul id="recipe-ingredients">
+              <!-- Dynamically populated -->
+            </ul>
+
+            <h3>how to cook it</h3>
+            <ol id="recipe-steps">
+              <!-- Dynamically populated -->
+            </ol>
+            
+            <div class="action-footer">
+              <button id="download-btn" class="btn-pillow btn-ghost">
+                <span class="btn-icon">💾</span> Save Offline (Markdown)
+              </button>
+            </div>
+          </div>
+
+          <div class="recipe-photo-container">
+            <img id="recipe-photo" src="" alt="AI generated recipe photo" class="recipe-photo hidden" />
+            <div id="photo-placeholder" class="photo-placeholder">
+              <span class="placeholder-icon">🍳</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>built gently with cloud-pup energy ☁️🐾</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

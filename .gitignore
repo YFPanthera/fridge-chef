@@ -1,0 +1,21 @@
+# Agent
+.agent/
+
+# OS
+.DS_Store
+
+# Environment
+.env
+.env.local
+codingjam-fridge-chef/backend/.env
+
+# Python Virtual Environments
+.venv/
+venv/
+codingjam-fridge-chef/backend/.venv/
+
+# Pycache
+__pycache__/
+*.py[cod]
+codingjam-fridge-chef/backend/__pycache__/
+codingjam-fridge-chef/backend/tests/__pycache__/
